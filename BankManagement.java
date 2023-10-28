@@ -125,7 +125,7 @@ public class BankManagement
         Account account1 = new Account();
 
         int age;
-        System.out.println("Enter your Age : ");
+        System.out.print("Enter your Age : ");
         age=sc.nextInt();
         if(age>=15)
         {
@@ -136,5 +136,5 @@ public class BankManagement
         {
             System.out.println("You are a Minor. You cannot account cannot be created.");
         }
-}
+    }
 }
