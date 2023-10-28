@@ -38,7 +38,7 @@ class Account
         
         System.out.print("Enter your Residential Address : ");
         this.address=sc.nextLine();
-        
+        sc.nextLine();
         this.age=age;
     }
     
@@ -72,6 +72,71 @@ class Account
         return age;
     } 
 
+    //for showing details
+    public void showDetails()
+    {
+        Scanner sc=new Scanner(System.in);
+        System.out.println("Account Number : "+accountNumber);
+        System.out.println("Account Holder Name : "+accountHolder);
+        System.out.println("Account Balance : "+balance);
+        System.out.println("Phone Number : "+phoneNumber);
+        System.out.println("Address : "+address);
+        char check;
+        System.out.println("Do you want to edit any details? (y/n)");
+        check=sc.next().charAt(0);
+        if(check=='y')
+        {
+            editDetails();
+        }
+        else
+        {
+            return;
+        }
+    }
+
+    //for modifying details
+    public void editDetails()
+    {
+        Scanner sc=new Scanner(System.in);
+        int flag=0;
+
+        while(flag==0)
+        {
+            System.out.println("Mention the index you want to edit : ");
+            System.out.println("1. Account Number.");
+            System.out.println("2. Account Holder Name.");
+            System.out.println("3. Account Balance.");
+            System.out.println("4. Phone Number.");
+            System.out.println("5. Residential Address.");
+            System.out.println("6. Exit Editing.");
+        
+            int index=sc.nextInt();
+
+            switch(index)
+            {
+                case 1:
+                    System.out.print("Enter new Account Number : ");
+                    this.accountNumber = sc.nextInt();
+                case 2:
+                    System.out.print("Enter new Account Holder Name : ");
+                    this.accountHolder = sc.nextLine();
+                    sc.nextLine();
+                case 3:
+                    System.out.print("Sorry Balance cannot be edited.");
+                case 4:
+                    System.out.print("Enter new Phone Number : ");
+                    this.phoneNumber = sc.nextLong();
+                case 5:
+                    System.out.print("Enter new Residential Address : ");
+                    this.address = sc.nextLine();
+                    sc.nextLine();
+                case 6:
+                    flag = 1;
+                default:
+                    System.out.println("Invalid Index.");
+            }
+        }    
+    } 
 }
 
 class Bank
@@ -122,19 +187,26 @@ public class BankManagement
 
         //object creation
         Bank bank = new Bank();
-        Account account1 = new Account();
+        Account newAccount = new Account();
 
         int age;
+
+        System.out.println("Enter your choice : ");
+        System.out.println("1. Add new Account.");
+        
         System.out.println("Enter your Age : ");
         age=sc.nextInt();
         if(age>=15)
         {
-            account1.userDetails(age);
-            bank.addAccount(account1);
+            newAccount.userDetails(age);
+            bank.addAccount(newAccount);
         }
         else
         {
             System.out.println("You are a Minor. You cannot account cannot be created.");
         }
-}
+        
+
+        
+    }
 }
